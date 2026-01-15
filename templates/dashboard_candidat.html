@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard Candidat</title>
+</head>
+
+<body>
+    <h2>Bienvenue Candidat {{ current_user.nom }}</h2>
+    <p><a href="{{ url_for('logout') }}">Déconnexion</a></p>
+    <p>Ici vous pourrez passer les examens et consulter vos résultats.</p>
+</body>
+
+</html>
