@@ -3,7 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Gestion QCM{% endblock %}</title>
+    <title>Plateforme QCM</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}">
+    
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
@@ -23,6 +25,9 @@
         {% endwith %}
         {% block content %}{% endblock %}
     </div>
+
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/exam.js') }}"></script>
 </body>
 
 </html>

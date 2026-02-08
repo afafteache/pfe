@@ -1,11 +1,51 @@
+/* Fond de page léger pour ne pas fatiguer les yeux */
 body {
-    font-family: Arial, sans-serif;
-    margin: 50px;
+    background-color: #f4f7f6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-input,
-select,
-button {
-    margin: 5px 0;
-    padding: 5px;
+/* Style des cartes d'examen */
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* Personnalisation du chronomètre */
+#timer {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Effet au survol des questions */
+.question-block {
+    transition: transform 0.2s ease;
+}
+
+.question-block:hover {
+    border-color: #007bff !important;
+}
+
+/* Rendre les options plus grandes pour le confort tactile/souris */
+.form-check {
+    padding: 12px 20px;
+    margin-bottom: 8px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.form-check:hover {
+    background-color: #f8f9fa;
+}
+
+.form-check-input {
+    margin-top: 0.3rem;
+}
+
+/* Barre de progression animée */
+.progress-bar {
+    transition: width 0.4s ease;
 }

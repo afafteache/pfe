@@ -1,14 +1,27 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4">Tableau de Bord Administrateur</h2>
 
-<head>
-    <title>Dashboard Admin</title>
-</head>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Taux de Réussite</h5>
+                <p class="card-text" style="font-size: 2rem;">78%</p>
+            </div>
+        </div>
+    </div>
 
-<body>
-    <h2>Bienvenue Admin {{ current_user.nom }}</h2>
-    <p><a href="{{ url_for('logout') }}">Déconnexion</a></p>
-    <p>Ici vous pourrez gérer les utilisateurs, concours et modules.</p>
-</body>
-
-</html>
+    <div class="col-md-8">
+        <div class="card mb-3">
+            <div class="card-header">Importer des Candidats (Excel/CSV)</div>
+            <div class="card-body">
+                <form action="#" method="post" enctype="multipart/form-data">
+                    <input type="file" class="form-control mb-2">
+                    <button class="btn btn-success">Lancer l'importation</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
