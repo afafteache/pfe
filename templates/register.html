@@ -5,16 +5,17 @@
 <form method="POST">
     <label>Nom :</label>
     <input type="text" name="nom" required><br>
-    <label>Email :</label>
-    <input type="email" name="email" required><br>
-    <label>Mot de passe :</label>
-    <input type="password" name="mot_de_passe" required><br>
+
+    <label>CIN :</label>
+    <input type="text" name="cin" required><br>
+
     <label>Rôle :</label>
     <select name="role" required>
         <option value="admin">Admin</option>
         <option value="enseignant">Enseignant</option>
         <option value="candidat">Candidat</option>
     </select><br>
+
     <button type="submit">S'inscrire</button>
 </form>
 {% endblock %}

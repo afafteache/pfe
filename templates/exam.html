@@ -6,18 +6,25 @@
 <div class="row justify-content-center mt-4">
     <div class="col-md-10">
         <div class="card shadow-lg border-0 mb-4">
+            
+            <!-- Header avec chrono -->
             <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-                <h4 class="mb-0">Examen de QCM</h4>
-                <div class="badge badge-danger p-3" style="font-size: 1.5rem;">
-                    Temps restant : <span id="timer">30:00</span>
+                <h4 class="mb-0">Examen QCM</h4>
+                <div class="badge bg-danger p-3 fs-5">
+                    ⏳ Temps restant : <span id="timer">30:00</span>
                 </div>
             </div>
             
+            <!-- Corps avec question -->
             <div class="card-body">
-                <div class="progress mb-4" style="height: 10px;">
-                    <div id="progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 10%;"></div>
+                <!-- Barre de progression -->
+                <div class="progress mb-4" style="height: 12px;">
+                    <div id="progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 5%;">
+                        1 / 20
+                    </div>
                 </div>
 
+                <!-- Bloc question -->
                 <form id="examen-form" method="POST" action="/soumettre_examen">
                     <div class="question-block p-4 border rounded bg-light mb-3">
                         <h5><strong>Question 1 :</strong> Quelle est la syntaxe correcte pour une route en Flask ?</h5>
@@ -36,9 +43,11 @@
                 </form>
             </div>
 
+            <!-- Footer avec navigation -->
             <div class="card-footer d-flex justify-content-between">
-                <button type="button" class="btn btn-secondary shadow-sm">Précédent</button>
-                <button type="submit" form="examen-form" class="btn btn-primary shadow-sm">Terminer l'examen</button>
+                <button type="button" class="btn btn-secondary shadow-sm">⬅ Précédent</button>
+                <button type="button" class="btn btn-secondary shadow-sm">Suivant ➡</button>
+                <button type="submit" form="examen-form" class="btn btn-primary shadow-sm">✅ Terminer l'examen</button>
             </div>
         </div>
     </div>

@@ -11,8 +11,7 @@ class Utilisateur(UserMixin, db.Model):
     __tablename__ = 'utilisateur'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     nom = db.Column(db.String(100), nullable=False)
-    email = db.Column(db.String(100), unique=True, nullable=False)
-    mot_de_passe = db.Column(db.String(255), nullable=False)
+    cin = db.Column(db.String(20), unique=True, nullable=False)  # CIN obligatoire
     role = db.Column(db.String(20), nullable=False)  # admin / enseignant / candidat
 
     # Relations

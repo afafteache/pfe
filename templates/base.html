@@ -1,33 +1,31 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <title>Plateforme QCM</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}">
-    
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-
 <body>
-    <nav>
-        <a href="{{ url_for('auth.login') }}">Login</a> |
-        <a href="{{ url_for('auth.register') }}">Register</a> |
-        <a href="{{ url_for('auth.logout') }}">Logout</a>
+    <nav class="p-3 bg-light border-bottom">
+     <a href="{{ url_for('auth.login') }}">Login</a> |
+     <a href="{{ url_for('auth.register') }}">Register</a> |
+     <a href="{{ url_for('auth.logout') }}">Logout</a>
     </nav>
-    <div class="container">
+
+    <div class="container mt-4">
         {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-        {% for category, message in messages %}
-        <div class="alert alert-{{ category }}">{{ message }}</div>
-        {% endfor %}
-        {% endif %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
         {% endwith %}
+
         {% block content %}{% endblock %}
     </div>
 
     <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/exam.js') }}"></script>
 </body>
-
 </html>

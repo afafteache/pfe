@@ -1,14 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
+    <meta charset="UTF-8">
     <title>Dashboard Candidat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
-    <h2>Bienvenue Candidat {{ current_user.nom }}</h2>
-    <p><a href="{{ url_for('logout') }}">Déconnexion</a></p>
-    <p>Ici vous pourrez passer les examens et consulter vos résultats.</p>
+    <header class="p-3 bg-dark text-white">
+        <h2>Bienvenue, {{ current_user.nom }}</h2>
+        <nav>
+            <a href="{{ url_for('auth.logout') }}" class="btn btn-danger">Déconnexion</a>
+        </nav>
+    </header>
+
+    <main class="container mt-4">
+        <p class="lead">Vous êtes connecté en tant que <strong>Candidat</strong>.</p>
+        <p>Ici, vous pouvez :</p>
+        <ul>
+            <li>Passer vos examens en ligne</li>
+            <li>Consulter vos résultats</li>
+        </ul>
+
+        <div class="mt-4">
+            <a href="{{ url_for('exam.exam') }}" class="btn btn-primary">Commencer l'examen</a>
+        </div>
+    </main>
 </body>
 
 </html>

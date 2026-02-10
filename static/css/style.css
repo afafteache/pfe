@@ -17,7 +17,6 @@ body {
     letter-spacing: 1px;
 }
 
-/* Effet au survol des questions */
 .question-block {
     transition: transform 0.2s ease;
 }
@@ -45,7 +44,6 @@ body {
     margin-top: 0.3rem;
 }
 
-/* Barre de progression animée */
 .progress-bar {
     transition: width 0.4s ease;
 }

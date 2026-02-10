@@ -6,28 +6,35 @@ from flask_bcrypt import Bcrypt
 auth_bp = Blueprint('auth', __name__)
 bcrypt = Bcrypt()
 
+# =========================
+# REGISTER
+# =========================
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         nom = request.form['nom']
-        email = request.form['email']
-        mot_de_passe = bcrypt.generate_password_hash(request.form['mot_de_passe']).decode('utf-8')
-        role = request.form['role']
+        cin = request.form['cin']   # nouveau champ CIN
+        role = "candidat"           # rôle imposé par défaut
 
-        user = Utilisateur(nom=nom, email=email, mot_de_passe=mot_de_passe, role=role)
+        user = Utilisateur(nom=nom, cin=cin, role=role)
         db.session.add(user)
         db.session.commit()
         flash("Inscription réussie !", "success")
         return redirect(url_for('auth.login'))
     return render_template('register.html')
 
+
+# =========================
+# LOGIN
+# =========================
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        email = request.form['email']
-        mot_de_passe = request.form['mot_de_passe']
-        user = Utilisateur.query.filter_by(email=email).first()
-        if user and bcrypt.check_password_hash(user.mot_de_passe, mot_de_passe):
+        nom = request.form['nom']
+        cin = request.form['cin']
+
+        user = Utilisateur.query.filter_by(nom=nom, cin=cin).first()
+        if user:
             login_user(user)
             flash("Connexion réussie !", "success")
             if user.role == "admin":
@@ -37,9 +44,13 @@ def login():
             else:
                 return redirect(url_for('dashboard_candidat'))
         else:
-            flash("Email ou mot de passe incorrect", "danger")
+            flash("Nom ou CIN incorrect", "danger")
     return render_template('login.html')
 
+
+# =========================
+# LOGOUT
+# =========================
 @auth_bp.route('/logout')
 @login_required
 def logout():

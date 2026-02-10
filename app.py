@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, url_for
 from flask_login import LoginManager, login_required
 from models import db, Utilisateur
 from routes_auth import auth_bp
+from routes_exam import exam_bp
 
 app = Flask(__name__)
 
@@ -23,7 +24,8 @@ def load_user(user_id):
     return Utilisateur.query.get(int(user_id))
 
 # ================= BLUEPRINT =================
-app.register_blueprint(auth_bp)
+app.register_blueprint(auth_bp, url_prefix="/auth") 
+app.register_blueprint(exam_bp)
 
 # ================= ROUTES =================
 @app.route("/")

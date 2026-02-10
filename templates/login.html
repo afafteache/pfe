@@ -1,31 +1,23 @@
 {% extends "base.html" %}
-
-{% block title %}Connexion{% endblock %}
-
 {% block content %}
-<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
-    <div class="card shadow p-4" style="width: 400px;">
-        <h2 class="text-center mb-4">Connexion</h2>
-
-        <form method="POST">
-            <div class="mb-3">
-                <label for="email" class="form-label">Email :</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Entrez votre email"
-                    required>
+<div class="row justify-content-center mt-5">
+    <div class="col-md-4">
+        <div class="card shadow">
+            <div class="card-body">
+                <h3 class="text-center mb-4">Connexion</h3>
+                <form action="{{ url_for('auth.login') }}" method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">Nom</label>
+                        <input type="text" name="nom" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">CIN</label>
+                        <input type="text" name="cin" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Se connecter</button>
+                </form>
             </div>
-
-            <div class="mb-3">
-                <label for="mot_de_passe" class="form-label">Mot de passe :</label>
-                <input type="password" class="form-control" id="mot_de_passe" name="mot_de_passe"
-                    placeholder="Entrez votre mot de passe" required>
-            </div>
-
-            <button type="submit" class="btn btn-primary w-100">Se connecter</button>
-        </form>
-
-        <p class="text-center mt-3">
-            Pas de compte ? <a href="{{ url_for('auth.register') }}">Inscrivez-vous</a>
-        </p>
+        </div>
     </div>
 </div>
 {% endblock %}
