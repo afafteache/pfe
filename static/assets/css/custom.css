@@ -1,0 +1,23 @@
+/* custom.css */
+
+/* Fond général de la page login */
+.login-page body {
+  background-color: #f5f7fa; /* gris clair */
+}
+
+/* Header de la carte */
+.login-page .card-header {
+  background: linear-gradient(90deg, #0066cc, #00cc99); /* bleu-vert */
+  color: white;
+}
+
+/* Bouton de connexion */
+.login-page .btn {
+  background-color: #ff3366; /* rose */
+  color: white;
+  border: none;
+}
+
+.login-page .btn:hover {
+  background-color: #e62e5c; /* rose foncé au hover */
+}

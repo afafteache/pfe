@@ -1,0 +1,40 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Dashboard Candidat{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid py-4">
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <p class="text-sm">Examens Disponibles</p>
+          <h4>{{ examens_disponibles }}</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <p class="text-sm">Examens Passés</p>
+          <h4>{{ examens_passes }}</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <p class="text-sm">Ma Moyenne</p>
+          <h4>{{ moyenne }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

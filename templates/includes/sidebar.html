@@ -1,0 +1,153 @@
+<aside style="z-index: 1;" 
+  class="sidenav navbar navbar-vertical navbar-expand-xs border-radius-lg fixed-start ms-2 bg-white my-2" 
+  id="sidenav-main">
+
+  <div class="sidenav-header">
+    <i class="fas fa-times p-3 cursor-pointer text-dark opacity-5 position-absolute end-0 top-0 d-none d-xl-none" 
+       aria-hidden="true" id="iconSidenav"></i>
+
+    <a class="navbar-brand px-4 py-3 m-0" href="{{ url_for('pages.index') }}">
+      <i class="material-symbols-rounded text-dark">quiz</i>
+      <span class="ms-1 text-sm text-dark">Gestion QCM</span>
+    </a>
+  </div>
+
+  <hr class="horizontal dark mt-0 mb-2">
+
+  <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
+    <ul class="navbar-nav">
+
+      <!-- ================= DASHBOARD ================= -->
+      <li class="nav-item">
+        <a class="nav-link {% if segment == 'dashboard' %} active bg-gradient-dark text-white {% else %} text-dark {% endif %}" 
+           href="{{ url_for('pages.index') }}">
+          <i class="material-symbols-rounded opacity-5">dashboard</i>
+          <span class="nav-link-text ms-1">Dashboard</span>
+        </a>
+      </li>
+
+      <!-- ================= QCM MANAGEMENT ================= -->
+      <li class="nav-item mt-3">
+        <h6 class="ps-4 ms-2 text-uppercase text-xs text-dark font-weight-bolder opacity-5">
+          Gestion QCM
+        </h6>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="">
+          <i class="material-symbols-rounded opacity-5">description</i>
+          <span class="nav-link-text ms-1">Concours / Examens</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="">
+          <i class="material-symbols-rounded opacity-5">add_circle</i>
+          <span class="nav-link-text ms-1">Créer un QCM</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="">
+          <i class="material-symbols-rounded opacity-5">help</i>
+          <span class="nav-link-text ms-1">Questions</span>
+        </a>
+      </li>
+
+      <!-- ================= USERS ================= -->
+      <li class="nav-item mt-3">
+        <h6 class="ps-4 ms-2 text-uppercase text-xs text-dark font-weight-bolder opacity-5">
+          Utilisateurs
+        </h6>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="{{ url_for('dashboard.candidat') }}">
+          <i class="material-symbols-rounded opacity-5">groups</i>
+          <span class="nav-link-text ms-1">Candidats</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="{{ url_for('dashboard.enseignant') }}">
+          <i class="material-symbols-rounded opacity-5">school</i>
+          <span class="nav-link-text ms-1">Enseignants</span>
+        </a>
+      </li>
+
+      <!-- ================= RESULTATS ================= -->
+      <li class="nav-item mt-3">
+        <h6 class="ps-4 ms-2 text-uppercase text-xs text-dark font-weight-bolder opacity-5">
+          Résultats
+        </h6>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="">
+          <i class="material-symbols-rounded opacity-5">leaderboard</i>
+          <span class="nav-link-text ms-1">Résultats</span>
+        </a>
+      </li>
+
+      <!-- ================= ACCOUNT ================= -->
+      <li class="nav-item mt-3">
+        <h6 class="ps-4 ms-2 text-uppercase text-xs text-dark font-weight-bolder opacity-5">
+          Compte
+        </h6>
+      </li>
+
+      {% if current_user.is_authenticated %}
+
+        {% if current_user.role == "admin" %}
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="{{ url_for('dashboard.admin') }}">
+              <i class="material-symbols-rounded opacity-5">admin_panel_settings</i>
+              <span class="nav-link-text ms-1">Admin Panel</span>
+            </a>
+          </li>
+
+        {% elif current_user.role == "enseignant" %}
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="{{ url_for('dashboard.enseignant') }}">
+              <i class="material-symbols-rounded opacity-5">school</i>
+              <span class="nav-link-text ms-1">Espace Enseignant</span>
+            </a>
+          </li>
+
+        {% elif current_user.role == "candidat" %}
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="{{ url_for('dashboard.candidat') }}">
+              <i class="material-symbols-rounded opacity-5">person</i>
+              <span class="nav-link-text ms-1">Espace Candidat</span>
+            </a>
+          </li>
+        {% endif %}
+
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="{{ url_for('auth.logout') }}">
+            <i class="material-symbols-rounded opacity-5">logout</i>
+            <span class="nav-link-text ms-1">Déconnexion</span>
+          </a>
+        </li>
+
+      {% else %}
+
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="{{ url_for('auth.login') }}">
+            <i class="material-symbols-rounded opacity-5">login</i>
+            <span class="nav-link-text ms-1">Connexion</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="{{ url_for('auth.register') }}">
+            <i class="material-symbols-rounded opacity-5">assignment</i>
+            <span class="nav-link-text ms-1">Inscription</span>
+          </a>
+        </li>
+
+      {% endif %}
+
+    </ul>
+  </div>
+</aside>
